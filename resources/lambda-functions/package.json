@@ -1,0 +1,15 @@
+{
+    "name": "typesense-lambda",
+    "version": "1.0.0",
+    "description": "Lambda function",
+    "main": "index.js",
+    "dependencies": {
+      "aws-sdk": "^2.1280.0",
+      "typesense": "1.7.1"
+    },
+    "devDependencies": {
+      "@types/aws-lambda": "^8.10.92",
+      "@types/aws-sdk": "^2.7.0",
+      "@types/node": "10.12.18"
+    }
+  }

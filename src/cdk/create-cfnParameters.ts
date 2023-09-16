@@ -19,13 +19,11 @@ export const createParametersStack = (stack: Construct, defaultFields?: Record<s
     OpenSearchStreamingIAMRoleName,
   } = ResourceConstants.PARAMETERS;
 
-  console.log({stack})
-
   return new Map<string, CfnParameter>([
     [
       TYPESENSE_PARAMS.typesenseApiKey,
       new CfnParameter(stack, TYPESENSE_PARAMS.typesenseApiKey, {
-        description: 'Algolia App ID.',
+        description: 'Typesense App ID.',
         default: "",
       }),
     ],

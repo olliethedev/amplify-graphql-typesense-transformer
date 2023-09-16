@@ -94,10 +94,7 @@ export class TypesenseTransformer extends TransformerPluginBase {
     const { Env } = ResourceConstants.PARAMETERS;
     const { HasEnvironmentParameter } = ResourceConstants.CONDITIONS;
 
-    console.log({STACK_NAME})
-
     const stack = context.stackManager.createStack(STACK_NAME);
-    console.log(stack)
 
     setMappings(stack);
     createCondition(stack, context, Env, HasEnvironmentParameter);
@@ -106,11 +103,7 @@ export class TypesenseTransformer extends TransformerPluginBase {
     stack.templateOptions.templateFormatVersion = '2010-09-09';
 
     const { defaultFieldParams, defaultSettingsParams } = createParametersMap(this.searchableObjectTypeDefinitions);
-    console.log({searchableObjectTypeDefinitions:this.searchableObjectTypeDefinitions, defaultFieldParams,defaultSettingsParams})
-
-    console.log("before createParametersInStack")
     const parameterMap = createParametersInStack(stack.node.scope, defaultFieldParams, defaultSettingsParams);
-    console.log("after createParametersInStack")
 
     const lambdaRole = createLambdaRole(context, stack, parameterMap);
     const lambda = createLambda(stack, context.api, parameterMap, lambdaRole);
@@ -137,10 +130,7 @@ export class TypesenseTransformer extends TransformerPluginBase {
       fields.push(
         makeField(
           model.fieldName,
-          [makeInputValueDefinition("query", makeNonNullType(makeNamedType("String"))),
-          makeInputValueDefinition("field", makeNonNullType(makeNamedType("String"))),
-          makeInputValueDefinition("filter", makeNamedType("String")),
-          makeInputValueDefinition("sort", makeNamedType("String")),],
+          [makeInputValueDefinition("searchParameters", makeNonNullType(makeNamedType("AWSJSON")))],
           makeNamedType("AWSJSON"),
         )
       );

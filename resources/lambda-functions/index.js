@@ -70,7 +70,7 @@ const typesenseClient = new Typesense.Client({
 */
 
 /* AppSync query example
-"{\"typeName\":\"Query\",\"tableName\":\"Blog-mp6xr657pvbpjbyd4nqbvk44du-dev\",\"arguments\":\"{\\\"query\\\":\\\"hello!\\\",\\\"field\\\":\\\"name\\\"}\"}"
+"{\"typeName\":\"Query\",\"tableName\":\"Blog-mp6xr657pvbpjbyd4nqbvk44du-dev\",\"arguments\":\"{\\\"searchParameters\\\":{\\\"q\\\":\\\"text\\\",\\\"query_by\\\":\\\"name\\\",\\\"filter_by\\\":\\\"num_comments:>100\\\",\\\"sort_by\\\":\\\"num_comments:desc\\\"}}\"}"
 
 */
 
@@ -133,13 +133,8 @@ exports.handler = async (event) => {
 const handleAppSyncQuery = (event) => {
     const collection = typesenseClient.collections(event.tableName.toLowerCase());
     const parsedEvent = JSON.parse(event.arguments);
-    const { query, field, filter, sort } = parsedEvent;
-    return collection.documents().search({
-        q: query,
-        query_by: field,
-        filter_by: filter,
-        sort_by: sort
-    });
+    const { searchParameters } = parsedEvent;
+    return collection.documents().search(searchParameters);
 };
 
 const getTypesenseFieldType = (dynamoType) => {
@@ -161,6 +156,7 @@ const getTypesenseFieldType = (dynamoType) => {
             return 'string';
     }
 };
+
 
 
 

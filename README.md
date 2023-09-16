@@ -47,7 +47,7 @@ type Todo @model @typesense {
 }
 ```
 
-4. **Utilize the Generated Search Query**: The transformer also updates your GraphQL generated queries with a search query for each model using the `@typesense` directive.
+4. **Use the Generated Search Query**: The transformer also updates your GraphQL generated queries with a search query for each model using the `@typesense` directive.
 
 ```javascript
 import { API } from "aws-amplify";

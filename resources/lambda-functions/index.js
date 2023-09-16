@@ -99,7 +99,7 @@ exports.handler = async (event) => {
         const docFields = DynamoDB.Converter.unmarshall(rawDoc);
 
         const operation = {
-            action: record.eventName === 'INSERT' || record.eventName === 'MODIFY' ? 'upsert' : 'delete',
+            action: record.eventName === 'INSERT' || (record.eventName === 'MODIFY' && !docFields._deleted) ? 'upsert' : 'delete',
             collectionName: tableName.toLowerCase(),
             document: {
                 ...docFields

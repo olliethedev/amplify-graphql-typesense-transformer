@@ -1,0 +1,47 @@
+{
+    "Records": [
+        {
+            "eventID": "75c6d0774736d13b7ecd133f35da0a22",
+            "eventName": "INSERT",
+            "eventVersion": "1.1",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-east-1",
+            "dynamodb": {
+                "ApproximateCreationDateTime": 1694805859,
+                "Keys": {
+                    "id": {
+                        "S": "e5855fc0-0ad5-4de3-8f2b-2a28168a352a"
+                    }
+                },
+                "NewImage": {
+                    "createdAt": {
+                        "S": "2023-09-15T19:24:19.368Z"
+                    },
+                    "_lastChangedAt": {
+                        "N": "1694805859393"
+                    },
+                    "__typename": {
+                        "S": "Blog"
+                    },
+                    "name": {
+                        "S": "lets go1"
+                    },
+                    "id": {
+                        "S": "e5855fc0-0ad5-4de3-8f2b-2a28168a352a"
+                    },
+                    "_version": {
+                        "N": "1"
+                    },
+                    "updatedAt": {
+                        "S": "2023-09-15T19:24:19.368Z"
+                    }
+                },
+                "SequenceNumber": "4841800000000015978594257",
+                "SizeBytes": 200,
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:us-east-1:446581856886:table/Blog-mp6xr657pvbpjbyd4nqbvk44du-dev/stream/2023-09-14T15:08:09.233"
+        }
+        
+    ]
+}

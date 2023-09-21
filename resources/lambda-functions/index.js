@@ -4,11 +4,7 @@ const Typesense = require('typesense');
 const TYPESENSE_API_KEY = process.env.TYPESENSE_API_KEY;
 const TYPESENSE_HOST = process.env.TYPESENSE_HOST;
 const TYPESENSE_PORT = process.env.TYPESENSE_PORT;
-const TYPESENSE_PROTOCOL = process.env.TYPESENSE_PROTOCOL || 'http';
-
-if (!TYPESENSE_API_KEY || !TYPESENSE_HOST || !TYPESENSE_PORT) {
-    throw new Error('You need to provide TYPESENSE_API_KEY, TYPESENSE_HOST, and TYPESENSE_PORT env variables.');
-}
+const TYPESENSE_PROTOCOL = process.env.TYPESENSE_PROTOCOL;
 
 const typesenseClient = new Typesense.Client({
     nodes: [{
@@ -77,6 +73,7 @@ const typesenseClient = new Typesense.Client({
 exports.handler = async (event) => {
     console.log("env: ", process.env);
     console.info(JSON.stringify(event, null, 4));
+
       try {
           if (event.Records) {
               return handleDbEvent(event);
@@ -138,6 +135,7 @@ const handleAppSyncQuery = (event) => {
 };
 
 const getTypesenseFieldType = (dynamoType) => {
+    console.log({dynamoType});
     switch (dynamoType) {
         case 'S':
         case 'SS':

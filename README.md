@@ -1,3 +1,6 @@
+[![Code Coverage](https://github.com/olliethedev/amplify-graphql-typesense-transformer/actions/workflows/coverage.yml/badge.svg)](https://github.com/olliethedev/amplify-graphql-typesense-transformer/actions/workflows/coverage.yml)
+
+
 # Amplify GraphQL Typesense Transformer
 
 Enhance your Amplify API with serverless search capabilities using the Typesense transformer.

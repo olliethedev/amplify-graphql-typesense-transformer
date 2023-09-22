@@ -6,7 +6,7 @@
 Enhance your Amplify API with serverless search capabilities using the Typesense transformer.
 
 ## Overview
-The Amplify GraphQL Typesense Transformer allows you to seamlessly integrate Typesense, a modern, open-source search engine designed with cutting-edge algorithms and machine learning, into your Amplify API. It offers a privacy-friendly approach and is optimized for the latest hardware capabilities.
+The Amplify GraphQL Typesense Transformer allows you to seamlessly integrate Typesense, a modern, open-source search engine designed with cutting-edge algorithms and machine learning, into your AWS Amplify API. It offers a privacy-friendly approach and is optimized for the latest hardware capabilities.
 
 ## Getting Started
 
@@ -20,9 +20,7 @@ npm install amplify-graphql-typesense-transformer
 
 ```json
 {
-    ...
     "transformers": [
-        ...,
         "amplify-graphql-typesense-transformer"
     ]
 }
@@ -32,9 +30,8 @@ npm install amplify-graphql-typesense-transformer
 
 ```json
 {
-  ...
-  "TypesenseApiKey": "...api-key...",
-  "TypesenseHost": "abc.typesense.net",
+  "TypesenseApiKey": "<API_KEY>",
+  "TypesenseHost": "xxx.a1.typesense.net",
   "TypesensePort": "443",
   "TypesenseProtocol": "https"
 }
@@ -77,10 +74,12 @@ amplify push
 ```
 
 ### Example Project
-_Work in Progress_
+Check out [this project](./examples/blog) for a searchable blog example.
 
 ## How It Works
 The `@typesense` directive establishes a dedicated Lambda function for each GraphQL API in your Amplify project. It then links DynamoDB streams from the corresponding tables to this function. Upon receiving a stream, the function processes the fields as defined, transforms the record into a Typesense payload, and updates (or creates if not present) the Typesense collection named after the model.
+
+Read more about building custom directives [here](https://docs.amplify.aws/cli/plugins/authoring/#authoring-custom-graphql-transformers--directives).
 
 ## Contribution
 We appreciate and welcome contributions! If you have improvements or features to suggest, please feel free to submit a pull request.
@@ -89,12 +88,10 @@ We appreciate and welcome contributions! If you have improvements or features to
 
 #### Transformer
 - Set up an Amplify project and integrate an API.
-- Incorporate the transformer using its absolute path:
+- Add the transformer using an absolute path in `amplify/backend/api/<API_NAME>/transform.conf.json`:
 
 ```json
-// amplify/backend/api/<API_NAME>/transform.conf.json
 {
-    ...
     "transformers": [
         "file:///absolute/path/to/graphql-Typesense-transform/"
     ]

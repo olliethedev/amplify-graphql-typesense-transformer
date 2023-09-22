@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-typesenseplugintest-dev-164901-authRole",
+      "UnauthRoleArn": "arn:aws:iam::446581856886:role/amplify-typesenseplugintest-dev-164901-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::446581856886:role/amplify-typesenseplugintest-dev-164901-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-typesenseplugintest-dev-164901-deployment",
+      "UnauthRoleName": "amplify-typesenseplugintest-dev-164901-unauthRole",
+      "StackName": "amplify-typesenseplugintest-dev-164901",
+      "StackId": "arn:aws:cloudformation:us-east-1:446581856886:stack/amplify-typesenseplugintest-dev-164901/f94dad20-5276-11ee-b647-0abac5d5836d",
+      "AmplifyAppId": "d3laiu8iow4b7z"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3laiu8iow4b7z",
+          "type": "cicd"
+        }
+      },
+      "api": {
+        "typesenseplugintest": {}
+      },
+      "auth": {
+        "typesenseplugintest07b21a06": {}
+      }
+    }
+  }
+}

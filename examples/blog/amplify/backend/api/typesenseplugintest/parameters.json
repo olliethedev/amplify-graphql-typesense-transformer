@@ -1,0 +1,9 @@
+{
+  "AppSyncApiName": "typesenseplugintest",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "TypesenseApiKey": "<replace_me>",
+  "TypesenseHost": "<replace_me>",
+  "TypesensePort": "443",
+  "TypesenseProtocol": "https"
+}

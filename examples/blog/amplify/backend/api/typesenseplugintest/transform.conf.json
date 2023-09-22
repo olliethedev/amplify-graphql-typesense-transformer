@@ -1,0 +1,13 @@
+{
+    "Version": 5,
+    "ElasticsearchWarning": true,
+    "transformers": [
+        "amplify-graphql-typesense-transformer"
+    ],
+    "ResolverConfig": {
+        "project": {
+            "ConflictHandler": "AUTOMERGE",
+            "ConflictDetection": "VERSION"
+        }
+    }
+}

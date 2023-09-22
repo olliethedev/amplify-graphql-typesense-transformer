@@ -10,5 +10,11 @@
     "noImplicitAny": false,
     "strict": false
   },
-  "exclude": ["dist", "src/__tests__/**/*"]
+  "exclude": [
+    "dist",
+    "resources",
+    "examples",
+    "src/__tests__/**/*",
+    "**/*.test.ts",
+    "**/*.test.tsx"]
 }

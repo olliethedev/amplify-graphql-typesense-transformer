@@ -73,6 +73,19 @@ const results = await API.graphql<GraphQLQuery<SearchBlogsQuery>>({
 amplify push
 ```
 
+### Optional: Amplify Cloud CI/CD
+
+If you encounter an error related to amplify-graphql-typesense-transformer not being found, you may need to add the following to your `amplify.yml` file in the **cloud console**:
+
+```yaml
+backend:
+  phases:
+    build:
+      commands:
+        - npm install amplify-graphql-typesense-transformer
+        - amplifyPush --simple
+```
+
 ### Example Project
 Check out [this project](./examples/blog) for a searchable blog example.
 

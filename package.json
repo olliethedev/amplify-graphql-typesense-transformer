@@ -1,6 +1,6 @@
 {
   "name": "amplify-graphql-typesense-transformer",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Amplify GraphQL @typesense transformer",
   "author": "OllieTheDev",
   "license": "MIT",

@@ -47,7 +47,32 @@ type Todo @model @typesense {
 }
 ```
 
-4. **Use the Generated Search Query**: The transformer also updates your GraphQL generated queries with a search query for each model using the `@typesense` directive.
+4. **Deploy Changes**: Apply the modifications to your Amplify API.
+```bash
+amplify push
+```
+
+### Usage
+
+1. **Create a Record**: Create a record using the GraphQL API.
+
+```javascript
+import { API } from "aws-amplify";
+import * as mutations from "../graphql/mutations";
+import { GraphQLQuery } from "@aws-amplify/api";
+import { CreateBlogMutation } from "../API";
+
+const blogDetails: CreateBlogInput = {
+  name: text,
+};
+
+const newTodo = await API.graphql<GraphQLQuery<CreateBlogMutation>>({
+  query: mutations.createBlog,
+  variables: { input: blogDetails },
+});
+```
+
+2. **Search Record with a Search Query**: The transformer also creates your GraphQL queries with a search query for each model marked with the `@typesense` directive. You can learn about the query syntax from [Typesense Search API](https://typesense.org/docs/0.25.0/api/documents.html#search-documents).
 
 ```javascript
 import { API } from "aws-amplify";
@@ -61,17 +86,14 @@ const results = await API.graphql<GraphQLQuery<SearchBlogsQuery>>({
         searchParameters: JSON.stringify({
           q: `*${text}*`,
           query_by: "name",
-          filter_by: 'num_comments:>100',
-          sort_by: 'num_comments:desc'
         }),
     },
 });
 ```
 
-5. **Deploy Changes**: Apply the modifications to your Amplify API.
-```bash
-amplify push
-```
+### GraphQL Schema changes
+The transformer will automatically create a Typesense collection for each model with the `@typesense` directive, and the schema will be auto detected by Typesense. This means that any non distructive changes, like adding a new field to the GraphQL schema will be reflected in the Typesense collection. 
+
 
 ### Optional: Amplify Cloud CI/CD
 

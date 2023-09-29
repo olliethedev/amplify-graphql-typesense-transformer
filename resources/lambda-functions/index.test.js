@@ -85,20 +85,8 @@ describe('Test handler', () => {
     expect(mockCreate).toHaveBeenCalledTimes(1);
     expect(mockCreate).toHaveBeenCalledWith(expect.objectContaining({
         name: NEW_BLOG_TABLE_NAME.toLowerCase(),
-        fields: expect.arrayContaining([...Object.keys(mockEvent.Records[0].dynamodb.NewImage)
-        .filter(key => ['_version','_lastChangedAt'].indexOf(key) === -1)
-        .map(key => ({
-            name: key,
-            type: 'string'
-        })),
-        {
-            name: '_lastChangedAt',
-            type: 'float'
-        },
-        {
-            name: '_version',
-            type: 'float'
-        }]),
+        enable_nested_fields: true,
+        fields: expect.arrayContaining([{"name": ".*", "type": "auto" }]),
 
     }));
     // Expect the upsert function to have been called once (to upsert the document)

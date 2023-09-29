@@ -113,10 +113,10 @@ exports.handler = async (event) => {
             if (!collectionExists) {
                 const schema = {
                     name: op.collectionName,
-                    fields: Object.keys(op.document).map(key => ({
-                        name: key,
-                        type: getTypesenseFieldType(Object.keys(op.rawDoc[key])[0])
-                    }))
+                    enable_nested_fields: true,
+                    fields: [
+                        {name: ".*", type: "auto" }
+                    ]
                 };
                 await typesenseClient.collections().create(schema);
             }
@@ -133,28 +133,5 @@ const handleAppSyncQuery = (event) => {
     const { searchParameters } = parsedEvent;
     return collection.documents().search(searchParameters);
 };
-
-const getTypesenseFieldType = (dynamoType) => {
-    console.log({dynamoType});
-    switch (dynamoType) {
-        case 'S':
-        case 'SS':
-            return 'string';
-        case 'N':
-            return 'float';
-        case 'NS':
-            return 'float[]';
-        case 'BOOL':
-            return 'bool';
-        case 'M':
-            return 'object';
-        case 'L':
-            return 'object[]';
-        default:
-            return 'string';
-    }
-};
-
-
 
 

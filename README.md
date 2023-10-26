@@ -108,8 +108,9 @@ backend:
         - amplifyPush --simple
 ```
 
-### Example Project
-Check out [this project](./examples/blog) for a searchable blog example.
+### Example Projects
+- Check out [this project](./examples/blog) for a searchable blog example.
+- Check out [this post](https://medium.com/@olliethedev/building-a-feature-rich-blog-with-aws-amplify-a-low-code-approach-277d49f34c28) for an indepth tutorial on how to build a searchable low-code blog with AWS Amplify and Typesense.
 
 ## How It Works
 The `@typesense` directive establishes a dedicated Lambda function for each GraphQL API in your Amplify project. It then links DynamoDB streams from the corresponding tables to this function. Upon receiving a stream, the function processes the fields as defined, transforms the record into a Typesense payload, and updates (or creates if not present) the Typesense collection named after the model.
